@@ -35,22 +35,13 @@ function placeOnDOM(jsonArray) {
 }
 
 function complete(id) {
-    ajaxWork('/api/update/' + id, 'PUT', lol)
+    ajaxWork('/api/todos/complete/' + id, 'PUT', lol)
 }
 
 function deleteItem(id) {
-    ajaxWork('/api/delete/' + id, 'DELETE', lol)
-}
-
-function addTodo() {
-    var a = document.getElementById('tf1').value;
-    addTodosAJAX(a)
+    ajaxWork('/api/todos/delete/' + id, 'DELETE', lol)
 }
 
 function lol() {
 
-}
-
-function addTodosAJAX(data) {
-    ajaxWork('http://localhost:3000/api/add?data='+data, 'GET', lol)
 }

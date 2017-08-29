@@ -7,8 +7,11 @@
 </head>
 <body>
     <h1>Hamari Todo List</h1>
-    <input type="text" id="tf1" placeholder="Enter Todo List item">
-    <button onclick="addTodo()">Add Item</button>
+    <form action="/api/todos" method="post">
+        <input type="text" name="data" id="tf1" placeholder="Enter Todo List item">
+        <input type="submit" value="Add Item">
+    </form>
+    <!--<button onclick="addTodo()">Add Item</button>-->
     <button onclick="getTodosAJAX()">Haazir hoooooo</button>
     <div id="todos_list">
     </div>
