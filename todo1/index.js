@@ -17,7 +17,7 @@ function todosWork(url, statuses) {
         return(responseHTML)
 }
 
-let urlenc = bodyparser.urlencoded({extended: false})
+let urlenc = bodyparser.urlencoded({extended: true})
 app.use('/', express.static(__dirname + '/public'))
 
 // console.log(todo_db)
@@ -32,6 +32,7 @@ app.get('/api/todos', (req, res) => {
 
 app.post('/api/todos', urlenc, (req, res) => {
     let data = req.body.data
+    // console.log(data)
     // console.log('hey' + data)
     // console.log(req)
     todo_db.todos[todo_db.next_todo_id] = {title: data, status: todo_db.StatusENUMS.ACTIVE}

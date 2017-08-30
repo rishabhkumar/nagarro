@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="./script.js"></script>
 </head>
 <body>
-    <h1>Hamari Todo List</h1>
-    <form action="/api/todos" method="post">
-        <input type="text" name="data" id="tf1" placeholder="Enter Todo List item">
-        <input type="submit" value="Add Item">
-    </form>
-    <!--<button onclick="addTodo()">Add Item</button>-->
-    <button onclick="getTodosAJAX()">Haazir hoooooo</button>
+    <h1 class="lol">Hamari Todo List</h1>
+    <div class="row">
+        <div class="input-field col s6">
+            <input placeholder="Enter Todo item" id="ttf1" type="text" class="validate">
+            <label class="active" for="ttf1">Todo Item</label>
+        </div>
+    </div>
+    <a class="btn-floating btn-large waves-effect waves-light red" onclick="addTodoAJAX()"><i class="material-icons">add</i></a>
+
+
+    <a class="waves-effect waves-light btn-large" onclick="getTodosAJAX()"><i class="material-icons left">cloud</i>Fetch List</a>
     <div id="todos_list">
     </div>
 </body>
