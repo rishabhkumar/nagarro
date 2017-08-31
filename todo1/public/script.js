@@ -20,15 +20,14 @@ function placeOnDOM(jsonArray) {
     var length = jsonObject.next_id
     var a = document.getElementById('todos_list')
     // var b = '<ul>'
-    var b;
+    var b = '';
     for(var i = 1; i<length; i++) {
     // <a class="waves-effect waves-light btn-large">Button</a>
-        if(jsonObject.todo[i].status != 'DELETED') {
             if(jsonObject.todo[i].status == 'ACTIVE') {
                 // b += '<li>' + jsonObject.todo[i].title + "<a class=\"waves-effect waves-light btn-large\" onclick='complete("+i+")'>Completed</a><a class=\"waves-effect waves-light btn-large\" onclick='deleteItem("+i+")'>Delete</a></li>"
                 b += '      <div class="row">\n' +
                     '        <div class="col s12 m6">\n' +
-                    '          <div class="card blue-grey darken-1">\n' +
+                    '          <div class="card orange lighten-2">\n' +
                     '            <div class="card-content white-text">\n' +
                     '              <span class="card-title">ACTIVE</span>\n' +
                     '              <p>'+jsonObject.todo[i].title+'</p>\n' +
@@ -45,7 +44,7 @@ function placeOnDOM(jsonArray) {
                 // b += '<li style="color: green;">' + jsonObject.todo[i].title + " (COMPLETED)</li>"
                 b += '      <div class="row">\n' +
                     '        <div class="col s12 m6">\n' +
-                    '          <div class="card blue-grey darken-1">\n' +
+                    '          <div class="card green darken-1">\n' +
                     '            <div class="card-content white-text">\n' +
                     '              <span class="card-title">COMPLETED</span>\n' +
                     '              <p>' + jsonObject.todo[i].title + '</p>\n' +
@@ -58,7 +57,21 @@ function placeOnDOM(jsonArray) {
                     '        </div>\n' +
                     '      </div>'
             }
-        }
+            if(jsonObject.todo[i].status == 'DELETED') {
+                b += '      <div class="row del">\n' +
+                    '        <div class="col s12 m6">\n' +
+                    '          <div class="card red darken-3">\n' +
+                    '            <div class="card-content white-text">\n' +
+                    '              <span class="card-title">DELETED</span>\n' +
+                    '              <p>' + jsonObject.todo[i].title + '</p>\n' +
+                    '            </div>\n' +
+                    '            <div class="card-action">\n' +
+                    // '              <a class="waves-effect waves-light btn-large" onclick="deleteItem('+i+')">Delete</a>\n' +
+                    '            </div>\n' +
+                    '          </div>\n' +
+                    '        </div>\n' +
+                    '      </div>'
+            }
     }
     // b += '</ul>'
     a.innerHTML = b
@@ -93,4 +106,18 @@ function addTodoAJAX() {
         }
     }
     xmlhttprequest.send(data)
+}
+
+function showDeleted() {
+    let a = document.getElementsByClassName('del')
+    for(var i = 0; i<a.length; i++) {
+        a[i].style.display = 'block'
+    }
+}
+
+function hideDeleted() {
+    let a = document.getElementsByClassName('del')
+    for(var i = 0; i<a.length; i++) {
+        a[i].style.display = 'hidden'
+    }
 }

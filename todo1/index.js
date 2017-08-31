@@ -6,14 +6,17 @@ const app = express()
 
 
 function todosWork(url, statuses) {
-        let responseHTML = '<ul>'
+        // let responseHTML = '<ul>'
+        let responseHTML = []
         let length = todo_db.next_todo_id
+        let k = 0
         for(var i = 1; i<length; i++) {
             if(todo_db.todos[i].status == statuses) {
-                responseHTML += '<li>' + todo_db.todos[i].title + '</li>'
+                // responseHTML += '<li>' + todo_db.todos[i].title + '</li>'
+                responseHTML[k++] = todo_db.todos[i].title
             }
         }
-        responseHTML += '</ul>'
+        // responseHTML += '</ul>'
         return(responseHTML)
 }
 
